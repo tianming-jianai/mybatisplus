@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.itheima.dao.UserDao;
 import com.itheima.domain.User;
+import com.itheima.domain.query.UserQuery;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -40,6 +41,22 @@ public class testDql {
         LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.lt(User::getAge, 10);
         List<User> users = userDao.selectList(queryWrapper);
+        System.out.println(users);
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void testNullQuery() {
+        UserQuery uq = new UserQuery();
+        // uq.setAge(10);
+        uq.setAge2(30);
+
+        LambdaQueryWrapper<User> lqw = new LambdaQueryWrapper<>();
+        lqw.lt(null != uq.getAge2(), User::getAge, uq.getAge2());
+        lqw.gt(null != uq.getAge(), User::getAge, uq.getAge());
+        List<User> users = userDao.selectList(lqw);
         System.out.println(users);
     }
 }
