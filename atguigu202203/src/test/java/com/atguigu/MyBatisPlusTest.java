@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -42,5 +44,23 @@ public class MyBatisPlusTest {
         int result = userMapper.insert(user);
         System.out.println("result: " + result);
         System.out.println("userId: " + user.getId());
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void testDelete() {
+        // int result = userMapper.deleteById(1);
+        // System.out.println("result: " + result);
+
+        // HashMap<String, Object> map = new HashMap<>();
+        // map.put("name", "zhangsan");
+        // map.put("age", 23);
+        // int result = userMapper.deleteByMap(map);
+        // System.out.println("result: " + result);
+
+        int result = userMapper.deleteBatchIds(Arrays.asList(1L, 2L, 3L));
+        System.out.println("result: " + result);
     }
 }
