@@ -29,4 +29,18 @@ public class MyBatisPlusTest {
         List<User> users = userMapper.selectList(null);
         users.forEach(System.out::println);
     }
+
+    /**
+     *
+     */
+    @Test
+    public void testInsert() {
+        User user = new User();
+        user.setName("张三");
+        user.setAge(23);
+        user.setEmail("zhangsan@atguigu.com");
+        int result = userMapper.insert(user);
+        System.out.println("result: " + result);
+        System.out.println("userId: " + user.getId());
+    }
 }
