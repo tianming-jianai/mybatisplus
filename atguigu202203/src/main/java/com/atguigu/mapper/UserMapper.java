@@ -4,6 +4,8 @@ import com.atguigu.pojo.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.Map;
+
 /**
  * @BelongsProject: mybatisplus
  * @BelongsPackage: com.atguigu.mapper
@@ -14,4 +16,10 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
 
+    /**
+     * 根据id查询用户信息为map集合
+     * @param id
+     * @return
+     */
+    Map<String, String> selectMapById(Long id);
 }

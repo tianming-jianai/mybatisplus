@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @BelongsProject: mybatisplus
@@ -96,5 +97,14 @@ public class MyBatisPlusTest {
 
         List<User> list = userMapper.selectList(null);
         System.out.println(list);
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void testMapperSelect() {
+        Map<String, String> map = userMapper.selectMapById(1L);
+        System.out.println(map);
     }
 }
