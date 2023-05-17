@@ -76,4 +76,25 @@ public class MyBatisPlusTest {
         int result = userMapper.updateById(user);
         System.out.println("result: " + result);
     }
+
+    /**
+     *
+     */
+    @Test
+    public void testSelect() {
+        User user = userMapper.selectById(1L);
+        System.out.println(user);
+
+        List<User> users = userMapper.selectBatchIds(Arrays.asList(1L, 2L, 3L));
+        System.out.println(users);
+
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("name", "Jack");
+        map.put("age", 20);
+        List<User> users1 = userMapper.selectByMap(map);
+        System.out.println(users1);
+
+        List<User> list = userMapper.selectList(null);
+        System.out.println(list);
+    }
 }
